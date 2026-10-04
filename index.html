@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/png" href="c:\Users\acer\Downloads\766667536608192208-removebg-preview.png">
+
+        <title>Spesial Untuk Caliya 🤍</title>
+
+        <!-- Font -->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         
+         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="Ca.css">
+    </head>
+
+    <body>
+        <!-- OPENING NI BOS -->
+        <section id="opening" class="screen active">
+            <div class="opening-content">
+
+                <p class="eyebrow">HADIAH ULANG TAHUN</p>
+
+                <!-- Kotak -->
+                 <div class="gift-container" onclick="buka()">
+                    <div class="gift-box">
+                        <div class="box-body">
+                            <span>BLACK</span>
+                            <span>BOX</span>
+                        </div>
+                        <div class="box-lid"></div>
+                    </div>
+                 </div>
+
+             <h1>BLACK BOX</h1>
+             <p class="subtitle">dibuat khusus untuk Caliya</p>
+             <button class="line-button" onclick="buka()">OPEN</button>
+             <p class="tiny">dibuat oleh Zahra</p>
+            </div>
+        </section>
+
+        <!-- BISMILLAH MENU SELESAI CEPAT -->
+        <section id="menu" class="screen">
+            <div class="menu-content">
+                <p class="eyebrow">HADIAH ULANG TAHUN CALIYA</p>
+                <h2>Untuk kamu, <span id="nameMenu">pasangan Zahra</span></h2>
+                <p class="intro">Aku siapkan beberapa hadiah<br>Buka satu-persatu</p>
+            
+
+                <div class="cards">
+                 <!-- Letter -->
+                 <button class="gift-card" onclick="bukaSection('letter')">
+                    <span class="card-number">01</span>
+                    <span class="card-icon">✉</span>
+                    <span class="card-title">PESAN</span>
+                    <span class="card-desc">sesuatu yang mau aku bilang ke kamu</span>
+                 </button>
+
+                 <!-- Song -->
+                 <button class="gift-card" onclick="bukaSection('song')">
+                    <span class="card-number">02</span>
+                    <span class="card-icon">♫</span>
+                    <span class="card-title">LAGU</span>
+                    <spam class="card-desc">satu lagu yang aku pilih untuk kamu</span>
+                 </button>
+
+                 <!-- Wish -->
+                 <button class="gift-card" onclick="bukaSection('wish')">
+                    <span class="card-number">03</span>
+                    <span class="card-icon">★</span>
+                    <span class="card-title">HARAPAN</span>
+                    <span class="card-desc">harapan kecil yang aku layangkan ke langit untuk kamu</span>
+                 </button>
+
+                 <!-- Secret -->
+                 <button class="gift-card locked" id="secretCard" onclick="bukaSecret()">
+                    <span class="card-number">04</span>
+                    <span class="card-icon">?</span>
+                    <span class="card-title">RAHASIA</span>
+                    <span class="card-desc" id="secretText">terkunci untuk sekarang</span>
+                 </button>
+                </div>
+
+                <!-- Progress -->
+                 <p class="progress">
+                    <span id="progress">0</span>
+                    / 3 opened
+                 </p>
+            </div>
+        </section>
+
+        <!-- modal -->
+        <div class="modal" id="modal">
+            <div class="modal-background" onclick="tutupModal()"></div>
+            <div class="modal-box">
+                <button class="close" onclick="tutupModal()">X</button>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <!-- secret screen nya -->
+        <section class="screen" id="secret">
+            <div class="secret-content">
+                <p class="eyebrow">KAMU NEMUIN YANG TERAKHIR!</p>
+                <div class="secret-line"></div>
+                <p class="secret-small">Tapi jujur...</p>
+                <h2>sesuatu yang paling aku syukuri hari ini sebenarnya<br>bisa kenal sama kamu.</h2>
+                <p class="secret-message">Happy birthday,<span id="nameSecret">sayang</span>.<br><br>Semoga hal kecil ini bisa ingetin kamu kalau keberadaan kamu tuh berarti, dan ada seseorang yang selalu senang karna kamu ada (THT'S MEEEEE).</p>
+                <div class="heart">♡</div>
+                <p class="signature">— with Zahra's love</p>
+                <button class="line-button" onclick="restart()">MULAI DARI AWAL</button>
+            </div>
+        </section>
+        
+        <script src="Ca.js"></script>
+    </body>
+</html>

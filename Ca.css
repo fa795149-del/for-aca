@@ -1,0 +1,471 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --black: #0b0b0c;
+    --dark: #111113;
+    --card: #151517;
+    --gray: #77777d;
+    --light-gray: #b9b9bd;
+    --white: #eeeeef;
+    --line: rgba(255,255,255,0.12);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    overflow-x: hidden;
+}
+
+/* screen jancok */
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 22px;
+}
+
+.screen.active {
+    display: flex;
+    animation: fadeIn .8s ease;
+}
+
+.opening-content, .menu-content, .secret-content {
+    width: min(900px 100%);
+    text-align: center;
+}
+
+/* kotak */
+.gift-container {
+    height: 170px;
+    width: 170px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.gift-box {
+    height: 92px;
+    width: 110px;
+    position: relative;
+    transition: .5s ease;
+}
+
+.gift-container:hover .gift-box {
+    transform: translateY(-8px) rotate(-1deg);
+}
+
+.box-body {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    height: 72px;
+    width: 100px;
+    background: #1b1b1e;
+    border: 1px solid rgba(255,255,255, .16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-body span {
+    font-size: 8px;
+    letter-spacing: .28em;
+    margin-left: .28em;
+    color: #aaa;
+}
+
+.box-lid {
+    position: absolute;
+    z-index: 2;
+    top: 8px;
+    left: 0;
+    width: 110px;
+    height: 19px;
+    background: #252529;
+    border: 1px solid rgba(255,255,255, .2);
+}
+
+/* Text Verstappen */
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: .32em;
+    color: var(--gray);
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    color: var(--gray);
+    font-size: 13px;
+    letter-spacing: .08em;
+}
+
+.opening-content h1 {
+    font-size: clamp(48px, 10vw, 90px);
+    letter-spacing: .08em;
+    margin-top: 24px;
+}
+
+h1, h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+}
+
+.tiny {
+    color: #55555a;
+    font-size: 10px;
+    margin-top: 18px;
+}
+
+/* jemButton */
+.line-button {
+    margin-top: 32px;
+    padding: 12px 30px;
+    border: 1px solid var(--line);
+    background: transparent;
+    font-size: 10px;
+    letter-spacing: .28em;
+    color: white;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.line-button:hover {
+    background: white;
+    color: black;
+}
+
+/* -------------------------------------------------------------- */
+
+/* text di menu */
+.menu-content h2 {
+    font-size: clamp(36px, 7vw, 62px);
+    margin-bottom: 12px;
+}
+
+.menu-content h2 span {
+    color: var(--light-gray);
+}
+
+.intro {
+    color: var(--gray);
+    line-height: 1.8;
+    font-size: 13px;
+    margin-bottom: 42px;
+}
+
+/* cardnya */
+.cards {
+    width: min(760px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.gift-card {
+    position: relative;
+    min-height: 190px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 28px;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    transition: .3s ease;
+}
+
+.gift-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,.3);
+    background: #18181b;
+}
+
+.card-number {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-size: 9px;
+    color: #55555a;
+}
+
+.card-icon {
+    display: block;
+    font-family: var(--serif);
+    font-size: 30px;
+    color: #aaa;
+    margin-bottom: 35px;
+}
+
+.card-title {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .22em;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    display: block;
+    font-size: 11px;
+    color: #66666b;
+}
+
+/* yang locked tadi */
+.gift-card.locked {
+    cursor: not-allowed;
+    opacity: .55;
+}
+
+.gift-card.locked:hover {
+    transform: none;
+}
+
+/* progressnya */
+.progress {
+    margin-top: 28px;
+    font-size: 9px;
+    letter-spacing: .15em;
+    color: #55555a;
+}
+
+/* -------------------------------------------------------------- */
+
+/* modal pop up */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-background {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.82);
+    backdrop-filter: blur(7px);
+}
+
+.modal-box {
+    position: relative;
+    z-index: 2;
+    width: min(720px,100%);
+    max-height: 88vh;
+    overflow-y: auto;
+    background: #121214;
+    border: 1px solid var(--line);
+    padding: clamp(30px,6vw,60px);
+    animation: modalIn .4s ease;
+}
+
+.close {
+    position: absolute;
+    right: 22px;
+    top: 16px;
+    border: 0;
+    background: transparent;
+    color: #666;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
+}
+
+/* modal text */
+.modal-eyebrow {
+    font-size: 9px;
+    color: #666;
+    letter-spacing: .3em;
+    margin-bottom: 22px;
+}
+
+.modal-title {
+    font-family: var(--serif);
+    font-size: clamp(38px,7vw,60px);
+    font-weight: 400;
+    margin-bottom: 28px;
+}
+
+/* Letter */
+.letter {
+    color: #b5b5b8;
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.75;
+}
+
+.letter p {
+    margin-bottom: 22px;
+}
+
+.letter .sign {
+    margin-top: 35px;
+    color: white;
+}
+
+/* Song */
+.song-box {
+    border: 1px solid var(--line);
+    padding: 28px;
+}
+
+.song-name {
+    font-family: var(--serif);
+    font-size: 35px;
+}
+
+.song-artist {
+    color: #666;
+    font-size: 11px;
+    letter-spacing: .1em;
+    margin-bottom: 25px;
+}
+
+.song-note {
+    color: #aaa;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.song-link {
+    display: inline-block;
+    margin-top: 24px;
+    color: white;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+    padding-bottom: 6px;
+}
+
+/* i Wish i was a fish */
+.wish-list {
+    list-style: none;
+    border-top: 1px solid var(--line);
+}
+
+.wish-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    color: #aaa;
+    font-family: var(--serif);
+    font-size: 20px;
+}
+
+.wish-list li::before {
+    content: "✦";
+    color: #666;
+    margin-right: 14px;
+    font-family: var(--sans);
+    font-size: 10px;
+}
+
+/* Secret */
+.secret-content {
+    max-width: 650px;
+}
+
+.secret-line {
+    width: 45px;
+    height: 1px;
+    background: #555;
+    margin: 0 auto 35px;
+}
+
+.secret-small {
+    font-family: var(--serif);
+    font-size: 23px;
+    color: #777;
+}
+
+.secret-content h2 {
+    font-size: clamp(42px,7vw,68px);
+    line-height: 1.05;
+}
+
+.secret-message {
+    margin: 35px auto 0;
+    max-width: 450px;
+    color: #888;
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.65;
+}
+
+.heart {
+    margin: 35px 0 10px;
+    font-size: 28px;
+}
+
+.signature {
+    font-family: var(--serif);
+    color: #666;
+    font-size: 18px;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform:
+        translateY(20px)
+        scale(.98);
+    }
+    to {
+        opacity: 1;
+        transform:
+        translateY(0)
+        scale(1);
+    }
+}
+
+/* moil */
+@media (max-width: 620px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .gift-card {
+        min-height: 155px;
+    }
+    .card-icon {
+        margin-bottom: 25px;
+    }
+    .modal-box {
+        padding: 35px 24px;
+    }
+    .letter {
+        font-size: 18px;
+    }
+}
